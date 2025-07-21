@@ -90,13 +90,14 @@ li {
 button {
     background-color: #8B0000;
     color: white;
-    border: none;
+    border: 1px solid #B22222;
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9rem;
     margin-left: 10px;
     transition: background-color 0.3s;
+    white-space: nowrap;
 }
 
 button:hover {
@@ -106,10 +107,13 @@ button:hover {
 .email-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #1a1a1a;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     border: 1px solid #444;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #email-address {
