@@ -8,11 +8,3 @@ function copyEmail() {
     });
 }
 
-// Function to copy UN reference numbers to clipboard
-function copyReference(refNumber) {
-    navigator.clipboard.writeText(refNumber).then(() => {
-        alert(`Reference number ${refNumber} copied to clipboard!`);
-    }).catch(err => {
-        console.error('Failed to copy reference number: ', err);
-    });
-}
