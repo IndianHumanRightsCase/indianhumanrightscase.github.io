@@ -39,6 +39,38 @@
     // Function to share on Facebook
     function shareOnFacebook() {
         const url = encodeURIComponent(window.location.href);
+    // Function to share the story using Web Share API or fallback to copy
+    async function shareStory() {
+        const shareBtn = document.getElementById('share-btn');
+        const shareData = {
+            title: document.title,
+            text: document.querySelector('meta[name="description"]').content,
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                console.error("Sharing failed:", err);
+            }
+        } else {
+            // Fallback for browsers that don't support Web Share API
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                shareBtn.innerText = 'Link Copied!';
+                setTimeout(() => {
+                    shareBtn.innerText = 'Share Story';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy link: ', err);
+                shareBtn.innerText = 'Copy Failed!';
+                setTimeout(() => {
+                    shareBtn.innerText = 'Share Story';
+                }, 2000);
+            });
+        }
+    }
+
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener,noreferrer');
     }
 

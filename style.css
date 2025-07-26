@@ -46,7 +46,7 @@ header .subtitle {
 main {
     max-width: 800px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 20px; /* Use consistent padding */
 }
 
 section {
@@ -171,6 +171,15 @@ button:hover {
     transition: background-color 0.3s, transform 0.2s;
     border: none;
     cursor: pointer;
+}
+
+#share-btn {
+    background-color: #575757; /* A neutral, modern color */
+}
+
+#share-btn:hover {
+    background-color: #444444;
+    transform: translateY(-2px);
 }
 
 .share-btn.twitter {
@@ -306,12 +315,69 @@ footer {
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
+/* Responsive Design for Tablets and smaller devices */
+@media (max-width: 820px) {
+    body {
+        margin: 10px;
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Responsive Design for Mobile Phones */
 @media (max-width: 600px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem; /* Further reduce for small screens */
     }
+
+    header .subtitle {
+        font-size: 1rem;
+    }
+
     h2 {
         font-size: 1.5rem;
+    }
+
+    .details-link {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .share-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .share-btn {
+        width: 100%;
+        margin: 0;
+    }
+
+    .email-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #copy-email-btn {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
     }
 }
 
