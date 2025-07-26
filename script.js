@@ -1,13 +1,8 @@
 (function() {
     'use strict';
 
-    /**
-     * Gets the canonical URL of the page, without any hash fragments.
-     * @returns {string} The clean URL.
-     */
-    function getCleanUrl() {
-        return window.location.origin + window.location.pathname;
-    }
+    // Define the canonical URL that should always be shared.
+    const SHARE_URL = 'https://indianhumanrightscase.github.io/';
 
     /**
      * Copies the email address from the designated element to the clipboard.
@@ -44,36 +39,35 @@
     }
 
     /**
-     * Opens the Twitter share dialog with the page's clean URL and title.
+     * Opens the Twitter share dialog with the canonical URL and main site title.
      */
     function shareOnTwitter() {
-        const url = encodeURIComponent(getCleanUrl());
-        const text = encodeURIComponent(document.title);
+        const url = encodeURIComponent(SHARE_URL);
+        const text = encodeURIComponent("An Urgent Plea for Justice: Persecution of a Muslim Family in India");
         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
     }
 
     /**
-     * Opens the Facebook share dialog with the page's clean URL.
+     * Opens the Facebook share dialog with the canonical URL.
      */
     function shareOnFacebook() {
-        const url = encodeURIComponent(getCleanUrl());
+        const url = encodeURIComponent(SHARE_URL);
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener,noreferrer');
     }
 
     /**
-     * Sets up the native Web Share API for all designated share buttons.
-     * Provides a fallback to copy the clean URL to the clipboard.
+     * Sets up the native Web Share API to share the canonical URL.
+     * Provides a fallback to copy the canonical URL to the clipboard.
      */
     function setupNativeShare() {
         const shareButtons = document.querySelectorAll('.js-share-button');
         shareButtons.forEach(button => {
             button.addEventListener('click', async (event) => {
                 const buttonElement = event.currentTarget;
-                const cleanUrl = getCleanUrl();
                 const shareData = {
-                    title: document.title,
+                    title: "An Urgent Plea for Justice: Persecution of a Muslim Family in India",
                     text: document.querySelector('meta[name="description"]').content,
-                    url: cleanUrl
+                    url: SHARE_URL
                 };
 
                 if (navigator.share) {
@@ -84,7 +78,7 @@
                     }
                 } else {
                     // Fallback for browsers that do not support the Web Share API
-                    navigator.clipboard.writeText(cleanUrl).then(() => {
+                    navigator.clipboard.writeText(SHARE_URL).then(() => {
                         buttonElement.innerText = 'Link Copied!';
                         setTimeout(() => {
                             buttonElement.innerText = 'Share Story';
