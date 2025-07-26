@@ -97,7 +97,7 @@
 
     /**
      * Sets up the "Back to Top" and "Go to Bottom" buttons, managing their visibility
-     * and functionality.
+     * and functionality with a robust check for mobile devices.
      */
     function setupScrollButtons() {
         const backToTopBtn = document.getElementById('back-to-top-btn');
@@ -116,8 +116,12 @@
                 backToTopBtn.style.display = "none";
             }
 
+            // A more robust check for being at the bottom of the page.
+            // Some mobile browsers have rounding issues, so we check if we are "close enough".
+            const isAtBottom = scrollHeight - (scrollPosition + clientHeight) < 1;
+
             // Show/hide "Go to Bottom" button
-            if (scrollPosition + clientHeight >= scrollHeight - 20) {
+            if (isAtBottom) {
                 goToBottomBtn.style.display = "none";
             } else {
                 goToBottomBtn.style.display = "block";
