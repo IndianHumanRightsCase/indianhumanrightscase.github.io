@@ -17,17 +17,18 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-website-url.com/education.html">
+    <meta property="og:url" content="https://indianhumanrightscase.github.io/education.html">
     <meta property="og:title" content="Denial of Education: A Tool of Persecution">
     <meta property="og:description" content="The detailed story of how college staff and police officials in Uttar Pradesh, India, systematically denied a Muslim student his right to education through harassment, assault, and threats.">
-    <meta property="og:image" content="https://your-website-url.com/social-preview-education.jpg">
+    <meta property="og:image" content="images/social-preview-education.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://your-website-url.com/education.html">
+    <meta property="twitter:url" content="https://indianhumanrightscase.github.io/education.html">
     <meta property="twitter:title" content="Denial of Education: A Tool of Persecution">
     <meta property="twitter:description" content="The detailed story of how college staff and police officials in Uttar Pradesh, India, systematically denied a Muslim student his right to education through harassment, assault, and threats.">
-    <meta property="twitter:image" content="https://your-website-url.com/social-preview-education.jpg">
+    <meta property="twitter:image" content="images/social-preview-education.png">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts for better readability -->
@@ -41,12 +42,12 @@
         <p class="subtitle">The Persecution of a Muslim Family in Uttar Pradesh, India</p>
     </header>
     <main>
-        <section class="disclaimer">
+        <aside class="disclaimer">
             <!-- A prominent link to go back to the main story -->
-            <p style="text-align: center; font-size: 1.2rem;">
-                <a href="index.html" style="color: #ffc0cb; text-decoration: underline;">← Return to the Main Story</a>
+            <p class="return-link-wrapper">
+                <a href="index.html" class="return-link">← Return to the Main Story</a>
             </p>
-        </section>
+        </aside>
         <section id="education-story">
             <h2>Denial of Education: A Tool of Persecution</h2>
             <p>The campaign of persecution against my family was not limited to physical violence and death threats; it included a systematic and malicious effort at my college, <strong>Seth Ganga Sagar Jatiya Polytechnic in Khurja, Bulandshahr</strong>, to destroy my future by denying me my fundamental right to education. This was not a simple administrative issue; it was a deliberate tool of punishment, detailed in a formal 4-page complaint I submitted to the Director General of Police, Uttar Pradesh (dated approx. 14/01/25).</p>
@@ -61,8 +62,13 @@
             <p>The obstruction of justice was not limited to the local police station. When I escalated my complaint about the college to higher authorities, I was met with more threats. An officer named <strong>Sandeep Rana</strong>, from the **SP (Superintendent of Police) Rural office in Bulandshahr district**, threatened me multiple times, warning me to stop complaining about the incident. This demonstrated that the cover-up was being enforced by higher levels of the district police, leaving me with no safe avenue to seek help.</p>
             <h3>The Outcome: A Future Destroyed</h3>
             <p>As a result of this coordinated campaign of violence, administrative abuse, and police complicity at multiple levels, I was completely forced out of my education. I have lost two years of study, and my academic future is in ruins. To this day, the college is holding my Transfer Certificate (TC), effectively preventing me from enrolling in any other institution in India. The denial of my education was a deliberate and calculated act of persecution, designed to punish me for my identity and to destroy any chance I had of building a future.</p>
+            <div class="share-buttons">
+                <button class="share-btn twitter" onclick="shareOnTwitter()">Share on Twitter</button>
+                <button class="share-btn facebook" onclick="shareOnFacebook()">Share on Facebook</button>
+                <button class="share-btn print" onclick="window.print()">Print / Download PDF</button>
+            </div>
             <p style="text-align: center; font-size: 1.2rem; margin-top: 2rem;">
-                <a href="index.html" style="color: #ffc0cb; text-decoration: underline;">← Return to the Main Story</a>
+                <a href="index.html" class="return-link">← Return to the Main Story</a>
             </p>
         </section>
     </main>
@@ -71,5 +77,6 @@
     </footer>
     <!-- Link to your JavaScript file -->
     <script src="script.js"></script>
+    <button id="back-to-top-btn" title="Go to top" aria-label="Go back to the top of the page">↑</button>
 </body>
 </html>
