@@ -43,10 +43,7 @@
     </header>
     <main>
         <aside class="disclaimer">
-            <!-- A prominent link to go back to the main story -->
-            <p class="return-link-wrapper">
-                <a href="index.html" class="return-link">← Return to the Main Story</a>
-            </p>
+            <p><strong>SAFETY WARNING:</strong> This website details ongoing, life-threatening persecution by Indian state agents against a Muslim family. The specific names of the victims have been anonymized in this public version to protect them from severe and certain reprisals. The names of the alleged perpetrators, who are public officials or individuals acting with impunity, are included to ensure the claims are specific and to seek accountability. All information is firsthand and supported by evidence.</p>
         </aside>
         <section id="education-story">
             <h2>Denial of Education: A Tool of Persecution</h2>
@@ -80,5 +77,35 @@
     <script src="script.js"></script>
     <button id="go-to-bottom-btn" title="Go to bottom" aria-label="Go to the bottom of the page">↓</button>
     <button id="back-to-top-btn" title="Go to top" aria-label="Go back to the top of the page">↑</button>
+
+    <script>
+        // Go to Bottom button
+        const goToBottomBtn = document.getElementById("go-to-bottom-btn");
+        if (goToBottomBtn) {
+            goToBottomBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth"
+                });
+            });
+        }
+
+        // Back to Top button
+        const backToTopBtn = document.getElementById("back-to-top-btn");
+        if (backToTopBtn) {
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    backToTopBtn.style.display = "block";
+                } else {
+                    backToTopBtn.style.display = "none";
+                }
+            };
+
+            backToTopBtn.addEventListener("click", () => {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            });
+        }
+    </script>
 </body>
 </html>
