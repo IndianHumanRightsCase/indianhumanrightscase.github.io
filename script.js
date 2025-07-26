@@ -2,6 +2,14 @@
     'use strict';
 
     /**
+     * Gets the canonical URL of the page, without any hash fragments.
+     * @returns {string} The clean URL.
+     */
+    function getCleanUrl() {
+        return window.location.origin + window.location.pathname;
+    }
+
+    /**
      * Copies the email address from the designated element to the clipboard.
      * Provides visual feedback to the user.
      */
@@ -36,48 +44,47 @@
     }
 
     /**
-     * Opens the Twitter share dialog with the page URL and title.
+     * Opens the Twitter share dialog with the page's clean URL and title.
      */
     function shareOnTwitter() {
-        const url = encodeURIComponent(window.location.href);
+        const url = encodeURIComponent(getCleanUrl());
         const text = encodeURIComponent(document.title);
         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
     }
 
     /**
-     * Opens the Facebook share dialog with the page URL.
+     * Opens the Facebook share dialog with the page's clean URL.
      */
     function shareOnFacebook() {
-        const url = encodeURIComponent(window.location.href);
+        const url = encodeURIComponent(getCleanUrl());
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener,noreferrer');
     }
 
     /**
      * Sets up the native Web Share API for all designated share buttons.
-     * Provides a fallback to copy the URL to the clipboard.
+     * Provides a fallback to copy the clean URL to the clipboard.
      */
     function setupNativeShare() {
         const shareButtons = document.querySelectorAll('.js-share-button');
         shareButtons.forEach(button => {
             button.addEventListener('click', async (event) => {
                 const buttonElement = event.currentTarget;
+                const cleanUrl = getCleanUrl();
                 const shareData = {
                     title: document.title,
                     text: document.querySelector('meta[name="description"]').content,
-                    url: window.location.href
+                    url: cleanUrl
                 };
 
                 if (navigator.share) {
                     try {
                         await navigator.share(shareData);
                     } catch (err) {
-                        // This error can happen if the user cancels the share.
-                        // We don't need to log it as a failure.
                         console.log("Web Share API dialog closed.", err);
                     }
                 } else {
                     // Fallback for browsers that do not support the Web Share API
-                    navigator.clipboard.writeText(window.location.href).then(() => {
+                    navigator.clipboard.writeText(cleanUrl).then(() => {
                         buttonElement.innerText = 'Link Copied!';
                         setTimeout(() => {
                             buttonElement.innerText = 'Share Story';
