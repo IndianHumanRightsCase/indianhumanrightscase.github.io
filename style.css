@@ -720,6 +720,7 @@ footer {
     height: 16px;
     margin-right: 8px;
     background-color: #fff;
+    -webkit-mask-image: url('images/share-icon.svg');
     mask-image: url('images/share-icon.svg');
     mask-size: contain;
     vertical-align: middle;
