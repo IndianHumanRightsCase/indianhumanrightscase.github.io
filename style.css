@@ -12,22 +12,22 @@ html {
 }
 
 body {
-    font-family: 'Lato', sans-serif;
-    line-height: 1.6;
-    background-color: #1a1a1a;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    background-color: #181818;
     color: #e0e0e0;
-    margin: 20px;
+    margin: 0;
 }
 
 /* ==========================================================================
    Header
    ========================================================================== */
 header {
-    background-color: #8B0000; /* Dark Red */
+    background-color: #800000; /* Dark Red */
     color: #ffffff;
-    padding: 2rem;
+    padding: 3.5rem 2rem;
     text-align: center;
-    border-bottom: 4px solid #B22222;
+    border-bottom: 4px solid #a00000;
 }
 
 header h1 {
@@ -44,17 +44,18 @@ header .subtitle {
    Main Content & Sections
    ========================================================================== */
 main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 20px; /* Use consistent padding */
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2.5rem;
 }
 
 section {
-    background-color: #2c2c2c;
+    background-color: #222;
     border: 1px solid #444;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
+    padding: 2.5rem;
+    margin-bottom: 4rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .disclaimer {
@@ -84,11 +85,11 @@ section {
    Typography
    ========================================================================== */
 h2 {
-    font-size: 2rem;
-    color: #ff8c8c;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #555;
-    padding-bottom: 0.5rem;
+    font-size: 2.5rem;
+    color: #ffaaaa;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #555;
+    padding-bottom: 1rem;
 }
 
 h3 {
@@ -116,27 +117,28 @@ ul {
 }
 
 li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 /* ==========================================================================
    Interactive Elements (Buttons, Links)
    ========================================================================== */
 button {
-    background-color: #8B0000;
+    background-color: #990000;
     color: white;
-    border: 1px solid #B22222;
-    padding: 8px 12px;
-    border-radius: 5px;
+    border: 1px solid #c00;
+    padding: 12px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     margin-left: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
     white-space: nowrap;
 }
 
 button:hover {
-    background-color: #B22222;
+    background-color: #b30000;
+    transform: translateY(-3px);
 }
 
 .details-link {
@@ -153,7 +155,8 @@ button:hover {
     font-size: 1.1rem;
 }
 
-.details-link:hover {
+.details-link:hover,
+.cta-button:hover {
     background-color: #B22222;
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -350,7 +353,7 @@ button:hover {
    ========================================================================== */
 footer {
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
     margin-top: 2rem;
     color: #aaa;
     font-size: 0.9rem;
@@ -404,7 +407,7 @@ footer {
     }
 
     header h1 {
-        font-size: 1.8rem; /* Further reduce for small screens */
+        font-size: 1.6rem; /* Further reduce for small screens */
     }
 
     header .subtitle {
@@ -412,7 +415,7 @@ footer {
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     h3 {
@@ -426,7 +429,7 @@ footer {
     }
 
     .details-link {
-        padding: 12px 20px;
+        padding: 14px 22px;
         font-size: 1rem;
     }
 
@@ -453,11 +456,6 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
-    .disclaimer {
-        display: none;
-    }
-}
 
 /* ==========================================================================
    Print Styles
@@ -503,4 +501,197 @@ footer {
         border: none;
         padding: 0;
     }
+}
+
+.cta-button {
+    background-color: #ff4d4d;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Mobile Navigation
+   ========================================================================== */
+
+.desktop-navigation {
+    display: block;
+    margin-top: 2rem;
+}
+
+.desktop-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.desktop-navigation a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.desktop-navigation a:hover {
+    background-color: #a00000;
+}
+
+.primary-navigation {
+    display: none;
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .desktop-navigation {
+        display: none;
+    }
+
+    .primary-navigation {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
+        width: 80%;
+        max-width: 250px;
+        background: #2c2c2c;
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+    .primary-navigation ul {
+        list-style: none;
+        padding: 2rem 0;
+        margin: 0;
+    }
+
+    .primary-navigation a {
+        display: block;
+        color: #e0e0e0;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+    }
+
+    .primary-navigation a:hover {
+        background: #444;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        right: 1rem;
+        top: 1rem;
+        background: transparent;
+        border: 0;
+        padding: 0.5em;
+        cursor: pointer;
+    }
+
+    .mobile-nav-toggle .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .mobile-nav-toggle::before,
+    .mobile-nav-toggle::after {
+        content: '';
+        position: absolute;
+        width: 2em;
+        height: 3px;
+        background: white;
+        left: 0;
+        transform: rotate(0);
+        transition: transform 250ms ease-in-out;
+    }
+
+    .mobile-nav-toggle::before {
+        top: 0.5em;
+    }
+
+    .mobile-nav-toggle::after {
+        bottom: 0.5em;
+    }
+
+    .mobile-nav-toggle[aria-expanded="true"]::before {
+        transform: rotate(45deg);
+        top: 1em;
+    }
+
+    .mobile-nav-toggle[aria-expanded="true"]::after {
+        transform: rotate(-45deg);
+        bottom: 1em;
+    }
+}
+
+/* ==========================================================================
+   Contact Form
+   ========================================================================== */
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #f0c0c0;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+#form-status {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   Alternative Contact Section
+   ========================================================================== */
+
+.alternative-contact {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #444;
+}
+
+.active-link {
+    color: #ff4d4d !important;
+    font-weight: bold;
 }

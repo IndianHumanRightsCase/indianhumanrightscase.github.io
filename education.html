@@ -30,17 +30,34 @@
     <meta property="twitter:image" content="images/social-preview-education.png">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.min.css">
     <!-- Google Fonts for better readability -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="sr-only">Menu</span>
+        </button>
         <h1>A Desperate Plea for Life and Justice</h1>
         <p class="subtitle">The Persecution of a Muslim Family in Uttar Pradesh, India</p>
+        <nav class="desktop-navigation">
+            <ul role="list">
+                <li><a href="index.html">Main Story</a></li>
+                <li><a href="education.html">Education Story</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
+    <nav id="primary-navigation" class="primary-navigation" data-visible="false">
+        <ul role="list">
+            <li><a href="index.html">Main Story</a></li>
+            <li><a href="education.html">Education Story</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
     <main>
         <aside class="disclaimer">
             <p><strong>SAFETY WARNING:</strong> This website details ongoing, life-threatening persecution by Indian state agents against a Muslim family. The specific names of the victims have been anonymized in this public version to protect them from severe and certain reprisals. The names of the alleged perpetrators, who are public officials or individuals acting with impunity, are included to ensure the claims are specific and to seek accountability. All information is firsthand and supported by evidence.</p>
@@ -74,38 +91,9 @@
         <p>This website is a desperate appeal for help from a persecuted family. Information is accurate to the best of our ability as of June 2025.</p>
     </footer>
     <!-- Link to your JavaScript file -->
-    <script src="script.js"></script>
+    <script src="script.min.js"></script>
     <button id="go-to-bottom-btn" title="Go to bottom" aria-label="Go to the bottom of the page">↓</button>
     <button id="back-to-top-btn" title="Go to top" aria-label="Go back to the top of the page">↑</button>
 
-    <script>
-        // Go to Bottom button
-        const goToBottomBtn = document.getElementById("go-to-bottom-btn");
-        if (goToBottomBtn) {
-            goToBottomBtn.addEventListener("click", () => {
-                window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: "smooth"
-                });
-            });
-        }
-
-        // Back to Top button
-        const backToTopBtn = document.getElementById("back-to-top-btn");
-        if (backToTopBtn) {
-            window.onscroll = function() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    backToTopBtn.style.display = "block";
-                } else {
-                    backToTopBtn.style.display = "none";
-                }
-            };
-
-            backToTopBtn.addEventListener("click", () => {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            });
-        }
-    </script>
 </body>
 </html>

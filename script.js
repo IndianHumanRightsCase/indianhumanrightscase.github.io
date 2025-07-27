@@ -159,6 +159,18 @@
 
         // Scroll Buttons
         setupScrollButtons();
+
+        // Mobile Navigation
+        setupMobileNav();
+
+        // Contact Form
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener("submit", handleFormSubmit);
+        }
+
+        // Highlight active navigation link
+        highlightActiveNav();
     }
 
     // Run all setup functions when the DOM is fully loaded.
@@ -169,3 +181,72 @@
     }
 
 })();
+
+    /**
+     * Sets up the mobile navigation toggle.
+     */
+    function setupMobileNav() {
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const primaryNav = document.querySelector('.primary-navigation');
+
+        if (navToggle && primaryNav) {
+            navToggle.addEventListener('click', () => {
+                const isVisible = primaryNav.getAttribute('data-visible') === 'true';
+                primaryNav.setAttribute('data-visible', !isVisible);
+                navToggle.setAttribute('aria-expanded', !isVisible);
+            });
+        }
+    }
+
+    /**
+     * Handles the contact form submission.
+     */
+    async function handleFormSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const data = new FormData(form);
+        const status = document.getElementById('form-status');
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                status.innerHTML = "Thanks for your submission!";
+                form.reset();
+            } else {
+                const responseData = await response.json();
+                if (Object.hasOwn(responseData, 'errors')) {
+                    status.innerHTML = responseData["errors"].map(error => error["message"]).join(", ");
+                } else {
+                    status.innerHTML = "Oops! There was a problem submitting your form";
+                }
+            }
+        } catch (error) {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+        }
+    }
+
+    /**
+     * Highlights the active page in the navigation menus.
+     */
+    function highlightActiveNav() {
+        const currentLocation = window.location.pathname;
+        const navLinks = document.querySelectorAll('.desktop-navigation a, .primary-navigation a');
+
+        navLinks.forEach(link => {
+            // Handle the case for the root index.html
+            if (link.getAttribute('href') === 'index.html' && (currentLocation === '/' || currentLocation.endsWith('/index.html'))) {
+                link.classList.add('active-link');
+            }
+            // Handle other pages
+            else if (currentLocation.endsWith(link.getAttribute('href')) && link.getAttribute('href') !== 'index.html') {
+                link.classList.add('active-link');
+            }
+        });
+    }
