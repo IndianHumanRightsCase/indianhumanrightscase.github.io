@@ -39,27 +39,29 @@
 <body>
     <header>
         <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-            <span class="sr-only">Menu</span>
+            <span class="sr-only">Menu</span><span class="menu-icon-label">Menu</span>
         </button>
         <h1>A Desperate Plea for Life and Justice</h1>
         <p class="subtitle">The Persecution of a Muslim Family in Uttar Pradesh, India</p>
         <nav class="desktop-navigation">
-            <ul role="list">
+            <ul>
                 <li><a href="index.html">Main Story</a></li>
                 <li><a href="education.html">Education Story</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
             </ul>
         </nav>
     </header>
     <nav id="primary-navigation" class="primary-navigation" data-visible="false">
-        <ul role="list">
+        <ul>
             <li><a href="index.html">Main Story</a></li>
             <li><a href="education.html">Education Story</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
         </ul>
     </nav>
     <main>
-        <aside class="disclaimer">
+        <aside class="disclaimer" role="alert">
             <p><strong>SAFETY WARNING:</strong> This website details ongoing, life-threatening persecution by Indian state agents against a Muslim family. The specific names of the victims have been anonymized in this public version to protect them from severe and certain reprisals. The names of the alleged perpetrators, who are public officials or individuals acting with impunity, are included to ensure the claims are specific and to seek accountability. All information is firsthand and supported by evidence.</p>
         </aside>
         <section id="education-story">
@@ -77,10 +79,10 @@
             <h3>The Outcome: A Future Destroyed</h3>
             <p>As a result of this coordinated campaign of violence, administrative abuse, and police complicity at multiple levels, I was completely forced out of my education. I have lost two years of study, and my academic future is in ruins. To this day, the college is holding my Transfer Certificate (TC), effectively preventing me from enrolling in any other institution in India. The denial of my education was a deliberate and calculated act of persecution, designed to punish me for my identity and to destroy any chance I had of building a future.</p>
             <div class="share-buttons">
-                <button class="share-btn twitter">Share on Twitter</button>
-                <button class="share-btn facebook">Share on Facebook</button>
-                <button class="share-btn js-share-button">Share Story</button>
-                <button class="share-btn print">Print / Download PDF</button>
+                <button class="share-btn twitter" aria-label="Share on Twitter">Share on Twitter</button>
+                <button class="share-btn facebook" aria-label="Share on Facebook">Share on Facebook</button>
+                <button class="share-btn js-share-button" aria-label="Share this story"><span class="share-text">Share Story</span></button>
+                <button class="share-btn print" aria-label="Print or Download as PDF">Print / Download PDF</button>
             </div>
             <p style="text-align: center; font-size: 1.2rem; margin-top: 2rem;">
                 <a href="index.html" class="return-link">← Return to the Main Story</a>

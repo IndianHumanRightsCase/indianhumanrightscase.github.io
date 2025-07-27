@@ -40,27 +40,29 @@
 <body>
     <header>
         <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-            <span class="sr-only">Menu</span>
+            <span class="sr-only">Menu</span><span class="menu-icon-label">Menu</span>
         </button>
         <h1>A Desperate Plea for Life and Justice</h1>
         <p class="subtitle">The Persecution of a Muslim Family in Uttar Pradesh, India</p>
         <nav class="desktop-navigation">
-            <ul role="list">
+            <ul>
                 <li><a href="index.html">Main Story</a></li>
                 <li><a href="education.html">Education Story</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
             </ul>
         </nav>
     </header>
     <nav id="primary-navigation" class="primary-navigation" data-visible="false">
-        <ul role="list">
+        <ul>
             <li><a href="index.html">Main Story</a></li>
             <li><a href="education.html">Education Story</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
         </ul>
     </nav>
     <main>
-        <aside class="disclaimer">
+        <aside class="disclaimer" role="alert">
             <p><strong>SAFETY WARNING:</strong> This website details ongoing, life-threatening persecution by Indian state agents against a Muslim family. The specific names of the victims have been anonymized in this public version to protect them from severe and certain reprisals. The names of the alleged perpetrators, who are public officials or individuals acting with impunity, are included to ensure the claims are specific and to seek accountability. All information is firsthand and supported by evidence.</p>
         </aside>
         <section id="story">
@@ -107,10 +109,10 @@
             <p>Our lives are in immediate and constant danger in India. We have no protection. We are in so much pain, we fear we could be killed at any moment. Our most urgent need is to leave India and find a secure place in another country where we can live without fear. We are appealing to the international community, journalists, and human rights advocates to bring attention to our plight and help us find a path to safety. Your help could save our lives.</p>
             <p>Please share our story. Please advocate for our protection. Your attention could save our lives.</p>
             <div class="share-buttons">
-                <button class="share-btn twitter">Share on Twitter</button>
-                <button class="share-btn facebook">Share on Facebook</button>
-                <button class="share-btn js-share-button">Share Story</button>
-                <button class="share-btn print">Print / Download PDF</button>
+                <button class="share-btn twitter" aria-label="Share on Twitter">Share on Twitter</button>
+                <button class="share-btn facebook" aria-label="Share on Facebook">Share on Facebook</button>
+                <button class="share-btn js-share-button" aria-label="Share this story"><span class="share-text">Share Story</span></button>
+                <button class="share-btn print" aria-label="Print or Download as PDF">Print / Download PDF</button>
             </div>
         </section>
     </main>

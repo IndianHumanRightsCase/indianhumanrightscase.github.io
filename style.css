@@ -61,7 +61,7 @@ section {
 .disclaimer {
     background-color: #4a2c2c;
     border-left: 5px solid #ff4d4d;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .no-help-statement {
@@ -77,7 +77,7 @@ section {
 }
 
 .no-help-statement strong {
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -148,7 +148,7 @@ button:hover {
     padding: 15px 25px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     border: 1px solid #B22222;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -187,20 +187,12 @@ button:hover {
     border-radius: 5px;
     color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     transition: background-color 0.3s, transform 0.2s;
     border: none;
     cursor: pointer;
 }
 
-#share-btn {
-    background-color: #575757; /* A neutral, modern color */
-}
-
-#share-btn:hover {
-    background-color: #444444;
-    transform: translateY(-2px);
-}
 
 .share-btn.twitter {
     background-color: #1DA1F2;
@@ -298,7 +290,7 @@ button:hover {
 }
 
 #email-address {
-    font-weight: bold;
+    font-weight: 700;
     color: #ffdce0; /* Lighter Pink for better contrast */
     transition: background-color 0.3s;
     padding: 2px 4px;
@@ -493,8 +485,8 @@ footer {
         color: #000000;
     }
 
-    #email-address::after {
-        content: " (Email: " attr(data-email) ")"; /* Show email in text */
+    #email-address::before {
+        content: "Email: " attr(data-email); /* Show email in text */
     }
 
     .email-container {
@@ -657,7 +649,7 @@ footer {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: bold;
+    font-weight: 700;
     color: #f0c0c0;
 }
 
@@ -678,7 +670,7 @@ footer {
 
 #form-status {
     margin-top: 1rem;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 /* ==========================================================================
@@ -693,5 +685,43 @@ footer {
 
 .active-link {
     color: #ff4d4d !important;
-    font-weight: bold;
+    font-weight: 700;
 }
+
+.nav-share-button {
+    background-color: #575757;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-share-button:hover {
+    background-color: #444;
+}
+.menu-icon-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.share-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-color: #fff;
+    mask-image: url('images/share-icon.svg');
+    mask-size: contain;
+    vertical-align: middle;
+}
+
