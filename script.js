@@ -28,7 +28,8 @@
 
     function shareOnTwitter() {
         const url = encodeURIComponent(window.location.href);
-        const text = encodeURIComponent(document.title);
+        const descriptionMeta = document.querySelector('meta[name="description"]');
+        const text = encodeURIComponent(descriptionMeta ? descriptionMeta.content : document.title);
         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
     }
 
@@ -44,7 +45,7 @@
                 const buttonElement = event.currentTarget;
                 const shareData = {
                     title: document.title,
-                    text: document.querySelector('meta[name="description"]').content,
+                    text: document.querySelector('meta[name="description"]')?.content || 'Check out this link:',
                     url: window.location.href
                 };
                 if (navigator.share) {
