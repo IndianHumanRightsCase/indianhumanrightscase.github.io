@@ -21,46 +21,27 @@
     <meta property="og:url" content="https://indianhumanrightscase.github.io/">
     <meta property="og:title" content="An Urgent Plea for Justice: Persecution of a Muslim Family in India">
     <meta property="og:description" content="The story of an Indian Muslim family facing forced conversion, police torture, attempted murders by named officials, and malicious prosecution in Uttar Pradesh, India.">
-    <meta property="og:image" content="images/social-preview.png">
+    <meta property="og:image" content="https://indianhumanrightscase.github.io/images/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://indianhumanrightscase.github.io/">
     <meta property="twitter:title" content="An Urgent Plea for Justice: Persecution of a Muslim Family in India">
     <meta property="twitter:description" content="The story of an Indian Muslim family facing forced conversion, police torture, attempted murders by named officials, and malicious prosecution in Uttar Pradesh, India.">
-    <meta property="twitter:image" content="images/social-preview.png">
+    <meta property="twitter:image" content="https://indianhumanrightscase.github.io/images/social-preview.png">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Google Fonts for better readability -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-            <span class="sr-only">Menu</span><span class="menu-icon-label">Menu</span>
-        </button>
-        <h1>A Desperate Plea for Life and Justice</h1>
-        <p class="subtitle">The Persecution of a Muslim Family in Uttar Pradesh, India</p>
-        <nav class="desktop-navigation">
-            <ul>
-                <li><a href="index.html">Main Story</a></li>
-                <li><a href="education.html">Education Story</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
-            </ul>
-        </nav>
-    </header>
-    <nav id="primary-navigation" class="primary-navigation" data-visible="false">
-        <ul>
-            <li><a href="index.html">Main Story</a></li>
-            <li><a href="education.html">Education Story</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
-        </ul>
-    </nav>
+    <div data-include="header.html"></div>
     <main>
         <aside class="disclaimer" role="alert">
             <p><strong>SAFETY WARNING:</strong> This website details ongoing, life-threatening persecution by Indian state agents against a Muslim family. The specific names of the victims have been anonymized in this public version to protect them from severe and certain reprisals. The names of the alleged perpetrators, who are public officials or individuals acting with impunity, are included to ensure the claims are specific and to seek accountability. All information is firsthand and supported by evidence.</p>
@@ -109,17 +90,16 @@
             <p>Our lives are in immediate and constant danger in India. We have no protection. We are in so much pain, we fear we could be killed at any moment. Our most urgent need is to leave India and find a secure place in another country where we can live without fear. We are appealing to the international community, journalists, and human rights advocates to bring attention to our plight and help us find a path to safety. Your help could save our lives.</p>
             <p>Please share our story. Please advocate for our protection. Your attention could save our lives.</p>
             <div class="share-buttons">
-                <button class="share-btn twitter" aria-label="Share on Twitter">Share on Twitter</button>
-                <button class="share-btn facebook" aria-label="Share on Facebook">Share on Facebook</button>
+                <button class="share-btn twitter" aria-label="Share this story on Twitter">Share on Twitter</button>
+                <button class="share-btn facebook" aria-label="Share this story on Facebook">Share on Facebook</button>
                 <button class="share-btn js-share-button" aria-label="Share this story"><span class="share-text">Share Story</span></button>
                 <button class="share-btn print" aria-label="Print or Download as PDF">Print / Download PDF</button>
             </div>
         </section>
     </main>
-    <footer>
-        <p>This website is a desperate appeal for help from a persecuted family. Information is accurate to the best of our ability as of June 2025.</p>
-    </footer>
+    <div data-include="footer.html"></div>
     <!-- Link to your JavaScript file -->
+    <script src="include.js"></script>
     <script src="script.min.js"></script>
     <button id="go-to-bottom-btn" title="Go to bottom" aria-label="Go to the bottom of the page">↓</button>
     <button id="back-to-top-btn" title="Go to top" aria-label="Go back to the top of the page">↑</button>

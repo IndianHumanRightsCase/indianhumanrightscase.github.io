@@ -148,12 +148,6 @@
         }
     }
 
-    function displayEmail() {
-        const emailElement = document.getElementById('email-address');
-        if (emailElement && emailElement.dataset.email) {
-            emailElement.innerText = emailElement.dataset.email;
-        }
-    }
 
     function highlightActiveNav() {
         const currentLocation = window.location.pathname;
@@ -180,13 +174,10 @@
         if (contactForm) {
             contactForm.addEventListener("submit", handleFormSubmit);
         }
-        displayEmail();
         highlightActiveNav();
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeEventListeners);
-    } else {
+    document.addEventListener('htmlIncluded', () => {
         initializeEventListeners();
-    }
+    });
 })();

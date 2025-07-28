@@ -15,35 +15,14 @@
     <title>Contact Us - An Urgent Plea for Justice</title>
     <meta name="description" content="Contact the family to offer help, for media inquiries, or to request access to evidence.">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-            <span class="sr-only">Menu</span><span class="menu-icon-label">Menu</span>
-        </button>
-        <h1>A Desperate Plea for Life and Justice</h1>
-        <p class="subtitle">The Persecution of a Muslim Family in Uttar Pradesh, India</p>
-        <nav class="desktop-navigation">
-            <ul>
-                <li><a href="index.html">Main Story</a></li>
-                <li><a href="education.html">Education Story</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
-            </ul>
-        </nav>
-    </header>
-    <nav id="primary-navigation" class="primary-navigation" data-visible="false">
-        <ul>
-            <li><a href="index.html">Main Story</a></li>
-            <li><a href="education.html">Education Story</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><button class="nav-share-button js-share-button"><span class="share-icon"></span><span class="share-text">Share</span></button></li>
-        </ul>
-    </nav>
+    <div data-include="header.html"></div>
     <main>
         <section id="contact-form-section">
             <h2>Contact Us</h2>
@@ -86,9 +65,8 @@
             </p>
         </div>
     </main>
-    <footer>
-        <p>This website is a desperate appeal for help from a persecuted family. Information is accurate to the best of our ability as of June 2025.</p>
-    </footer>
+    <div data-include="footer.html"></div>
+    <script src="include.js"></script>
     <script src="script.min.js"></script>
 </body>
 </html>
