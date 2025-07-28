@@ -713,9 +713,10 @@ footer {
     width: 16px;
     height: 16px;
     margin-right: 8px;
-    background-color: #fff;
-    -webkit-mask: url('images/share-icon.svg') no-repeat center / contain;
-    mask: url('images/share-icon.svg') no-repeat center / contain;
+    background-image: url('images/share-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     vertical-align: middle;
 }
 
