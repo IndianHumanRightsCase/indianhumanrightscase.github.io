@@ -709,13 +709,9 @@ footer {
 }
 
 .share-icon {
-    display: inline-block;
     width: 16px;
     height: 16px;
     margin-right: 8px;
-    background-color: #fff;
-    -webkit-mask: url(https://indianhumanrightscase.github.io/images/share-icon.svg) no-repeat center / contain;
-    mask: url(https://indianhumanrightscase.github.io/images/share-icon.svg) no-repeat center / contain;
     vertical-align: middle;
 }
 
