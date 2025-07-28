@@ -1,6 +1,18 @@
 (function() {
     'use strict';
 
+    function getCanonicalUrl() {
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+            return ogUrl.content;
+        }
+        const canonical = document.querySelector('link[rel="canonical"]');
+        if (canonical) {
+            return canonical.href;
+        }
+        return window.location.href.split('?')[0].split('#')[0];
+    }
+
     function copyEmail() {
         const emailElement = document.getElementById('email-address');
         const copyBtn = document.getElementById('copy-email-btn');
@@ -26,33 +38,27 @@
         });
     }
 
-    function getShareData() {
-        return {
-            url: window.location.href,
-            title: document.title,
-            text: document.querySelector('meta[name="description"]').content,
-        };
-    }
-
     function shareOnTwitter() {
-        const { url, title } = getShareData();
-        const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
-        window.open(shareUrl, '_blank', 'noopener,noreferrer');
+        const url = encodeURIComponent(getCanonicalUrl());
+        const text = encodeURIComponent(document.title);
+        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
     }
 
     function shareOnFacebook() {
-        const { url } = getShareData();
-        const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-        window.open(shareUrl, '_blank', 'noopener,noreferrer');
+        const url = encodeURIComponent(getCanonicalUrl());
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener,noreferrer');
     }
 
     function setupNativeShare() {
         const shareButtons = document.querySelectorAll('.js-share-button');
         shareButtons.forEach(button => {
             button.addEventListener('click', async (event) => {
-                const { url, title, text } = getShareData();
-                const shareData = { title, text, url };
-
+                const buttonElement = event.currentTarget;
+                const shareData = {
+                    title: document.title,
+                    text: document.querySelector('meta[name="description"]').content,
+                    url: getCanonicalUrl()
+                };
                 if (navigator.share) {
                     try {
                         await navigator.share(shareData);
@@ -60,11 +66,11 @@
                         console.log("Web Share API dialog closed.", err);
                     }
                 } else {
-                    const shareTextElement = button.querySelector('.share-text');
+                    const shareTextElement = buttonElement.querySelector('.share-text');
                     if (!shareTextElement) return;
 
                     const originalText = shareTextElement.innerText;
-                    navigator.clipboard.writeText(url).then(() => {
+                    navigator.clipboard.writeText(getCanonicalUrl()).then(() => {
                         shareTextElement.innerText = 'Link Copied!';
                         setTimeout(() => {
                             shareTextElement.innerText = originalText;
@@ -117,8 +123,10 @@
         if (navToggle && primaryNav) {
             navToggle.addEventListener('click', () => {
                 const isVisible = primaryNav.getAttribute('data-visible') === 'true';
-                primaryNav.setAttribute('data-visible', !isVisible);
-                navToggle.setAttribute('aria-expanded', !isVisible);
+                const newVisibility = !isVisible;
+                primaryNav.setAttribute('data-visible', newVisibility);
+                navToggle.setAttribute('aria-expanded', newVisibility);
+                document.body.classList.toggle('nav-open', newVisibility);
             });
         }
     }
@@ -178,10 +186,11 @@
         if (contactForm) {
             contactForm.addEventListener("submit", handleFormSubmit);
         }
-        highlightActiveNav();
     }
 
-    document.addEventListener('htmlIncluded', () => {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeEventListeners);
+    } else {
         initializeEventListeners();
-    });
+    }
 })();

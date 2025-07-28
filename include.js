@@ -21,6 +21,12 @@
         document.dispatchEvent(new CustomEvent('htmlIncluded'));
     }
 
+    document.addEventListener('htmlIncluded', () => {
+        if (typeof highlightActiveNav === 'function') {
+            highlightActiveNav();
+        }
+    });
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', includeHTML);
     } else {
