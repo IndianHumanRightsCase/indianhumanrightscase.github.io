@@ -8,69 +8,76 @@
         const emailText = emailElement.dataset.email || emailElement.innerText;
         navigator.clipboard.writeText(emailText).then(() => {
             copyBtn.innerText = 'Copied!';
-            copyBtn.classList.add('success');
+            copyBtn.style.backgroundColor = '#28a745';
             emailElement.classList.add('highlight-copy');
             setTimeout(() => {
                 copyBtn.innerText = 'Copy Email';
-                copyBtn.classList.remove('success');
+                copyBtn.style.backgroundColor = '#8B0000';
                 emailElement.classList.remove('highlight-copy');
             }, 2000);
         }).catch(err => {
             console.error('Failed to copy email: ', err);
             copyBtn.innerText = 'Failed!';
-            copyBtn.classList.add('fail');
+            copyBtn.style.backgroundColor = '#dc3545';
             setTimeout(() => {
                 copyBtn.innerText = 'Copy Email';
-                copyBtn.classList.remove('fail');
+                copyBtn.style.backgroundColor = '#8B0000';
             }, 2000);
         });
     }
 
     function getShareData() {
-        const body = document.body.dataset;
+        const pageId = document.body.id;
+        let imageUrl;
+
+        if (pageId === 'education-page') {
+            imageUrl = 'https://indianhumanrightscase.github.io/images/social-preview-education.webp';
+        } else {
+            imageUrl = 'https://indianhumanrightscase.github.io/images/social-preview.webp';
+        }
+
+        // Update meta tags for social sharing
+        document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+        document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
+
         return {
-            title: body.shareTitle || document.title,
-            text: body.shareDescription || '',
-            url: body.shareUrl || window.location.href,
-            image: body.shareImage || ''
+            url: window.location.href,
+            title: document.title,
+            text: document.querySelector('meta[name="description"]').content,
         };
     }
 
     function shareOnTwitter() {
-        const { url, text } = getShareData();
-        const encodedUrl = encodeURIComponent(url);
-        const encodedText = encodeURIComponent(text);
-        window.open(`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`, '_blank', 'noopener,noreferrer');
+        const { url, title } = getShareData();
+        const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+        window.open(shareUrl, '_blank', 'noopener,noreferrer');
     }
 
     function shareOnFacebook() {
         const { url } = getShareData();
-        const encodedUrl = encodeURIComponent(url);
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank', 'noopener,noreferrer');
+        const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        window.open(shareUrl, '_blank', 'noopener,noreferrer');
     }
 
     function setupNativeShare() {
         const shareButtons = document.querySelectorAll('.js-share-button');
         shareButtons.forEach(button => {
             button.addEventListener('click', async (event) => {
-                const buttonElement = event.currentTarget;
-                const shareData = getShareData();
+                const { url, title, text } = getShareData();
+                const shareData = { title, text, url };
+
                 if (navigator.share) {
                     try {
-                        await navigator.share({
-                            title: shareData.title,
-                            text: shareData.text,
-                            url: shareData.url,
-                        });
+                        await navigator.share(shareData);
                     } catch (err) {
                         console.log("Web Share API dialog closed.", err);
                     }
                 } else {
-                    const shareTextElement = buttonElement.querySelector('.share-text');
+                    const shareTextElement = button.querySelector('.share-text');
                     if (!shareTextElement) return;
 
                     const originalText = shareTextElement.innerText;
-                    navigator.clipboard.writeText(shareData.url).then(() => {
+                    navigator.clipboard.writeText(url).then(() => {
                         shareTextElement.innerText = 'Link Copied!';
                         setTimeout(() => {
                             shareTextElement.innerText = originalText;
