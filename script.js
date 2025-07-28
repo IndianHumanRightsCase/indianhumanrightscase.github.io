@@ -27,19 +27,6 @@
     }
 
     function getShareData() {
-        const pageId = document.body.id;
-        let imageUrl;
-
-        if (pageId === 'education-page') {
-            imageUrl = 'https://indianhumanrightscase.github.io/images/social-preview-education.webp';
-        } else {
-            imageUrl = 'https://indianhumanrightscase.github.io/images/social-preview.webp';
-        }
-
-        // Update meta tags for social sharing
-        document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
-        document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
-
         return {
             url: window.location.href,
             title: document.title,
