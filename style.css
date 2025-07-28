@@ -713,10 +713,9 @@ footer {
     width: 16px;
     height: 16px;
     margin-right: 8px;
-    background-image: url('images/share-icon.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    background-color: #fff;
+    -webkit-mask: url(https://indianhumanrightscase.github.io/images/share-icon.svg) no-repeat center / contain;
+    mask: url(https://indianhumanrightscase.github.io/images/share-icon.svg) no-repeat center / contain;
     vertical-align: middle;
 }
 
