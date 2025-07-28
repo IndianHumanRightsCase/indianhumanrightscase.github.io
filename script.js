@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    const SHARE_URL = 'https://indianhumanrightscase.github.io/';
-
     function copyEmail() {
         const emailElement = document.getElementById('email-address');
         const copyBtn = document.getElementById('copy-email-btn');
@@ -10,32 +8,32 @@
         const emailText = emailElement.dataset.email || emailElement.innerText;
         navigator.clipboard.writeText(emailText).then(() => {
             copyBtn.innerText = 'Copied!';
-            copyBtn.style.backgroundColor = '#28a745';
+            copyBtn.classList.add('success');
             emailElement.classList.add('highlight-copy');
             setTimeout(() => {
                 copyBtn.innerText = 'Copy Email';
-                copyBtn.style.backgroundColor = '#8B0000';
+                copyBtn.classList.remove('success');
                 emailElement.classList.remove('highlight-copy');
             }, 2000);
         }).catch(err => {
             console.error('Failed to copy email: ', err);
             copyBtn.innerText = 'Failed!';
-            copyBtn.style.backgroundColor = '#dc3545';
+            copyBtn.classList.add('fail');
             setTimeout(() => {
                 copyBtn.innerText = 'Copy Email';
-                copyBtn.style.backgroundColor = '#8B0000';
+                copyBtn.classList.remove('fail');
             }, 2000);
         });
     }
 
     function shareOnTwitter() {
-        const url = encodeURIComponent(SHARE_URL);
+        const url = encodeURIComponent(window.location.href);
         const text = encodeURIComponent(document.title);
         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
     }
 
     function shareOnFacebook() {
-        const url = encodeURIComponent(SHARE_URL);
+        const url = encodeURIComponent(window.location.href);
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener,noreferrer');
     }
 
@@ -45,9 +43,9 @@
             button.addEventListener('click', async (event) => {
                 const buttonElement = event.currentTarget;
                 const shareData = {
-                    title: "An Urgent Plea for Justice: Persecution of a Muslim Family in India",
+                    title: document.title,
                     text: document.querySelector('meta[name="description"]').content,
-                    url: SHARE_URL
+                    url: window.location.href
                 };
                 if (navigator.share) {
                     try {
@@ -60,7 +58,7 @@
                     if (!shareTextElement) return;
 
                     const originalText = shareTextElement.innerText;
-                    navigator.clipboard.writeText(SHARE_URL).then(() => {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
                         shareTextElement.innerText = 'Link Copied!';
                         setTimeout(() => {
                             shareTextElement.innerText = originalText;

@@ -135,6 +135,16 @@ button:hover {
     transform: translateY(-3px);
 }
 
+#copy-email-btn.success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#copy-email-btn.fail {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
 .details-link {
     display: inline-block;
     background-color: #8B0000;
@@ -592,8 +602,8 @@ footer {
         display: block;
         position: absolute;
         z-index: 2000;
-        right: 1rem;
-        top: 1rem;
+        right: 1.5rem;
+        top: 2.2rem;
         background: transparent;
         border: 0;
         padding: 0.5em;
@@ -661,6 +671,7 @@ footer {
 .form-group input,
 .form-group textarea {
     width: 100%;
+    box-sizing: border-box;
     padding: 0.8rem;
     border-radius: 5px;
     border: 1px solid #444;
@@ -689,7 +700,7 @@ footer {
 }
 
 .active-link {
-    color: #ff4d4d !important;
+    color: #ff4d4d;
     font-weight: 700;
 }
 
