@@ -26,16 +26,27 @@
         });
     }
 
+    function getShareData() {
+        const body = document.body.dataset;
+        return {
+            title: body.shareTitle || document.title,
+            text: body.shareDescription || '',
+            url: body.shareUrl || window.location.href,
+            image: body.shareImage || ''
+        };
+    }
+
     function shareOnTwitter() {
-        const url = encodeURIComponent(window.location.href);
-        const descriptionMeta = document.querySelector('meta[name="description"]');
-        const text = encodeURIComponent(descriptionMeta ? descriptionMeta.content : document.title);
-        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'noopener,noreferrer');
+        const { url, text } = getShareData();
+        const encodedUrl = encodeURIComponent(url);
+        const encodedText = encodeURIComponent(text);
+        window.open(`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`, '_blank', 'noopener,noreferrer');
     }
 
     function shareOnFacebook() {
-        const url = encodeURIComponent(window.location.href);
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener,noreferrer');
+        const { url } = getShareData();
+        const encodedUrl = encodeURIComponent(url);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank', 'noopener,noreferrer');
     }
 
     function setupNativeShare() {
@@ -43,14 +54,14 @@
         shareButtons.forEach(button => {
             button.addEventListener('click', async (event) => {
                 const buttonElement = event.currentTarget;
-                const shareData = {
-                    title: document.title,
-                    text: document.querySelector('meta[name="description"]')?.content || 'Check out this link:',
-                    url: window.location.href
-                };
+                const shareData = getShareData();
                 if (navigator.share) {
                     try {
-                        await navigator.share(shareData);
+                        await navigator.share({
+                            title: shareData.title,
+                            text: shareData.text,
+                            url: shareData.url,
+                        });
                     } catch (err) {
                         console.log("Web Share API dialog closed.", err);
                     }
@@ -59,7 +70,7 @@
                     if (!shareTextElement) return;
 
                     const originalText = shareTextElement.innerText;
-                    navigator.clipboard.writeText(window.location.href).then(() => {
+                    navigator.clipboard.writeText(shareData.url).then(() => {
                         shareTextElement.innerText = 'Link Copied!';
                         setTimeout(() => {
                             shareTextElement.innerText = originalText;
