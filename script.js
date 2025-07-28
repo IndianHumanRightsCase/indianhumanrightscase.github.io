@@ -3,11 +3,11 @@
 
     function getCanonicalUrl() {
         const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) {
+        if (ogUrl && ogUrl.content) {
             return ogUrl.content;
         }
         const canonical = document.querySelector('link[rel="canonical"]');
-        if (canonical) {
+        if (canonical && canonical.href) {
             return canonical.href;
         }
         return window.location.href.split('?')[0].split('#')[0];
