@@ -166,6 +166,11 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+.share-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
 .return-link {
     color: #ffdce0; /* Lighter Pink for better contrast */
     text-decoration: underline;
@@ -405,11 +410,11 @@ footer {
     }
 
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     h3 {
-        font-size: 1.25rem; /* Fine-tune for better mobile readability */
+        font-size: 1.2rem; /* Fine-tune for better mobile readability */
     }
 
     .no-help-statement {

@@ -3,11 +3,11 @@
 
     function getCanonicalUrl() {
         const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl && ogUrl.content) {
+        if (ogUrl) {
             return ogUrl.content;
         }
         const canonical = document.querySelector('link[rel="canonical"]');
-        if (canonical && canonical.href) {
+        if (canonical) {
             return canonical.href;
         }
         return window.location.href.split('?')[0].split('#')[0];
@@ -162,19 +162,18 @@
 
 
     function highlightActiveNav() {
-        const currentLocation = window.location.pathname;
+        const currentLocation = window.location.pathname.split('/').pop();
         const navLinks = document.querySelectorAll('.desktop-navigation a, .primary-navigation a');
         navLinks.forEach(link => {
             const linkHref = link.getAttribute('href');
-            if (linkHref === 'index.html' && (currentLocation === '/' || currentLocation.endsWith('/index.html'))) {
-                link.classList.add('active-link');
-            } else if (currentLocation.endsWith(linkHref) && linkHref !== 'index.html') {
+            if (linkHref === currentLocation || (currentLocation === '' && linkHref === 'index.html')) {
                 link.classList.add('active-link');
             }
         });
     }
 
     function initializeEventListeners() {
+        highlightActiveNav();
         document.querySelectorAll('.share-btn.twitter').forEach(btn => btn.addEventListener('click', shareOnTwitter));
         document.querySelectorAll('.share-btn.facebook').forEach(btn => btn.addEventListener('click', shareOnFacebook));
         document.querySelectorAll('.share-btn.print').forEach(btn => btn.addEventListener('click', () => window.print()));
